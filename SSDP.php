@@ -19,7 +19,6 @@ class SSDP {
 
     public static function getDevices() {
 
-        var_dump(self::$headers);
         $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
         socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec'=>15, 'usec'=>10000));
         $send_ret = socket_sendto($socket, self::$headers, 1024, 0, '239.255.255.250', 1900);
@@ -33,4 +32,3 @@ class SSDP {
         return $arrDevicesList;
     }
 }
-var_dump(SSDP::getDevices());
